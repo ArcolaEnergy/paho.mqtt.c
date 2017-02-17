@@ -234,19 +234,19 @@ strip_options:
 install-strip: build strip_options install
 
 install: build
-	$(INSTALL_DATA) ${INSTALL_OPTS} ${MQTTLIB_C_TARGET} $(DESTDIR)${libdir}
-	$(INSTALL_DATA) ${INSTALL_OPTS} ${MQTTLIB_CS_TARGET} $(DESTDIR)${libdir}
-	$(INSTALL_DATA) ${INSTALL_OPTS} ${MQTTLIB_A_TARGET} $(DESTDIR)${libdir}
-	$(INSTALL_DATA) ${INSTALL_OPTS} ${MQTTLIB_AS_TARGET} $(DESTDIR)${libdir}
-	$(INSTALL_PROGRAM) ${INSTALL_OPTS} ${MQTTVERSION_TARGET} $(DESTDIR)${bindir}
-	$(LDCONFIG) $(DESTDIR)${libdir}
+	$(INSTALL_DATA) ${INSTALL_OPTS} ${MQTTLIB_C_TARGET} $(DESTDIR)${libdir}/
+	$(INSTALL_DATA) ${INSTALL_OPTS} ${MQTTLIB_CS_TARGET} $(DESTDIR)${libdir}/
+	$(INSTALL_DATA) ${INSTALL_OPTS} ${MQTTLIB_A_TARGET} $(DESTDIR)${libdir}/
+	$(INSTALL_DATA) ${INSTALL_OPTS} ${MQTTLIB_AS_TARGET} $(DESTDIR)${libdir}/
+	$(INSTALL_PROGRAM) ${INSTALL_OPTS} ${MQTTVERSION_TARGET} $(DESTDIR)${bindir}/
+	$(LDCONFIG) $(DESTDIR)${libdir}/
 	ln -s lib$(MQTTLIB_C).so.${MAJOR_VERSION} $(DESTDIR)${libdir}/lib$(MQTTLIB_C).so
 	ln -s lib$(MQTTLIB_CS).so.${MAJOR_VERSION} $(DESTDIR)${libdir}/lib$(MQTTLIB_CS).so
 	ln -s lib$(MQTTLIB_A).so.${MAJOR_VERSION} $(DESTDIR)${libdir}/lib$(MQTTLIB_A).so
 	ln -s lib$(MQTTLIB_AS).so.${MAJOR_VERSION} $(DESTDIR)${libdir}/lib$(MQTTLIB_AS).so
-	$(INSTALL_DATA) ${srcdir}/MQTTAsync.h $(DESTDIR)${includedir}
-	$(INSTALL_DATA) ${srcdir}/MQTTClient.h $(DESTDIR)${includedir}
-	$(INSTALL_DATA) ${srcdir}/MQTTClientPersistence.h $(DESTDIR)${includedir}
+	$(INSTALL_DATA) ${srcdir}/MQTTAsync.h $(DESTDIR)${includedir}/
+	$(INSTALL_DATA) ${srcdir}/MQTTClient.h $(DESTDIR)${includedir}/
+	$(INSTALL_DATA) ${srcdir}/MQTTClientPersistence.h $(DESTDIR)${includedir}/
 
 uninstall:
 	rm $(DESTDIR)${libdir}/lib$(MQTTLIB_C).so.${VERSION}
@@ -254,7 +254,7 @@ uninstall:
 	rm $(DESTDIR)${libdir}/lib$(MQTTLIB_A).so.${VERSION}
 	rm $(DESTDIR)${libdir}/lib$(MQTTLIB_AS).so.${VERSION}
 	rm $(DESTDIR)${bindir}/MQTTVersion
-	$(LDCONFIG) $(DESTDIR)${libdir}
+	$(LDCONFIG) $(DESTDIR)${libdir}/
 	rm $(DESTDIR)${libdir}/lib$(MQTTLIB_C).so
 	rm $(DESTDIR)${libdir}/lib$(MQTTLIB_CS).so
 	rm $(DESTDIR)${libdir}/lib$(MQTTLIB_A).so
