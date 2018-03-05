@@ -973,7 +973,11 @@ int MQTTClient_connectURI(MQTTClient handle, MQTTClient_connectOptions* options,
 
 	m->c->keepAliveInterval = options->keepAliveInterval;
 	m->c->cleansession = options->cleansession;
-	m->c->maxInflightMessages = (options->reliable) ? 1 : 10;
+	/*
+	 * JGW was 10, but that limits the rate at which we can send
+	 * messages over high latency links
+	 */
+	m->c->maxInflightMessages = (options->reliable) ? 1 : 200;
 
 	if (m->c->will)
 	{
