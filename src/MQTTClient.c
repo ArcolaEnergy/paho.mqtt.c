@@ -1065,7 +1065,7 @@ static int MQTTClient_connectURI(MQTTClient handle, MQTTClient_connectOptions* o
 	 * JGW was 10, but that limits the rate at which we can send
 	 * messages over high latency links
 	 */
-	m->c->maxInflightMessages = (options->reliable) ? 1 : 200;
+	m->c->maxInflightMessages = (options->reliable) ? 1 : 800;
 
 	if (m->c->will)
 	{
